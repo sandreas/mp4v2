@@ -65,6 +65,18 @@ using namespace mp4v2::util;
 
 #define OPT_STRING  "r:A:a:b:c:C:d:D:e:E:g:G:H:i:I:j:l:L:m:M:n:N:o:O:p:P:B:R:s:S:t:T:x:X:w:y:z:Z:"
 
+
+// fFJkKqQruUVWxXYz   (h=help, v=version)
+/*
+- MP4TagsSetSortName          ( tags, "my sortName" );  // J
+- MP4TagsSetSortArtist        ( tags, "my sortArtist" ); // f
+- MP4TagsSetSortAlbumArtist   ( tags, "my sortAlbumArtist" ); // F
+- MP4TagsSetSortAlbum         ( tags, "my sortAlbum" ); u
+- MP4TagsSetSortComposer      ( tags, "my sortComposer" ); r
+- MP4TagsSetSortTVShow        ( tags, "my sortTVShow" ); W
+*/
+
+
 #define ELEMENT_OF(x,i) x[int(i)]
 
 static const char* const help_text =
