@@ -117,4 +117,30 @@ DerivedData
 .DS_Store
 xcuserdata
 
+config.status
+GNUmakefile
+libmp4v2.la
+libtool
+mp4art
+mp4chaps
+mp4extract
+mp4file
+mp4info
+mp4subtitle
+mp4tags
+mp4track
+mp4trackdump
+*.o
+*.lo
+.deps
+.dirstamp
+.libs
+doc/man
+libplatform/config.h
+libplatform/impl.h.gch/
+libplatform/stamp-h1
+libutil/impl.h.gch/
+project/project.m4
+src/impl.h.gch/
+util/impl.h.gch/
 
