@@ -62,11 +62,17 @@ using namespace mp4v2::util;
 #define OPT_RELEASEDATE  'y'
 #define OPT_ARTISTID     'z'
 #define OPT_COMPOSERID   'Z'
+#define OPT_SORT_NAME    'f'
+#define OPT_SORT_ARTIST   'F'
+#define OPT_SORT_ALBUM_ARTIST   'J'
+#define OPT_SORT_ALBUM   'k'
+#define OPT_SORT_COMPOSER   'K'
+#define OPT_SORT_TV_SHOW   'W'
 
-#define OPT_STRING  "r:A:a:b:c:C:d:D:e:E:g:G:H:i:I:j:l:L:m:M:n:N:o:O:p:P:B:R:s:S:t:T:x:X:w:y:z:Z:"
+#define OPT_STRING  "r:A:a:b:c:C:d:D:e:E:g:G:H:i:I:j:l:L:m:M:n:N:o:O:p:P:B:R:s:S:t:T:x:X:w:y:z:Z:f:F:J:k:K:W:"
 
 
-// fFJkKqQruUVWxXYz   (h=help, v=version)
+// fFJkKqQuUVWxXYz   (h=help, v=version, r=remove)
 /*
 - MP4TagsSetSortName          ( tags, "my sortName" );  // J
 - MP4TagsSetSortArtist        ( tags, "my sortArtist" ); // f
@@ -122,6 +128,12 @@ static const char* const help_text =
     "  -y, -year        NUM  Set the release date\n"
     "  -z, -artistid    NUM  Set the artist ID\n"
     "  -Z, -composerid  NUM  Set the composer ID\n"
+    "  -f, -sortname    STR  Set the sort name\n"
+    "  -F, -sortartist  STR  Set the sort artist\n"
+    "  -k, -sortalbum   STR  Set the sort album\n"
+    "  -W, -sorttvshow  STR  Set the sort tv show\n"
+    "  -J, -sortalbumartist STR  Set the sort album artist\n"
+    "  -K, -sortcomposer    STR  Set the sort composer\n"
     "  -r, -remove      STR  Remove tags by code (e.g. \"-r cs\"\n"
     "                        removes the comment and song tags)";
 
@@ -167,8 +179,14 @@ extern "C" int
         { "composerid",  prog::Option::REQUIRED_ARG, 0, OPT_COMPOSERID   },
         { "remove",      prog::Option::REQUIRED_ARG, 0, OPT_REMOVE       },
         { "albumartist", prog::Option::REQUIRED_ARG, 0, OPT_ALBUM_ARTIST },
-        { "category",    prog::Option::REQUIRED_ARG, 0, OPT_CATEGORY },
-        { "rating",      prog::Option::REQUIRED_ARG, 0, OPT_RATING },
+        { "category",    prog::Option::REQUIRED_ARG, 0, OPT_CATEGORY     },
+        { "rating",      prog::Option::REQUIRED_ARG, 0, OPT_RATING       },
+        { "sortname",    prog::Option::REQUIRED_ARG, 0, OPT_SORT_NAME    },
+        { "sortartist",  prog::Option::REQUIRED_ARG, 0, OPT_SORT_ARTIST  },
+        { "sortalbum",   prog::Option::REQUIRED_ARG, 0, OPT_SORT_ALBUM   },
+        { "sorttvshow",  prog::Option::REQUIRED_ARG, 0, OPT_SORT_TV_SHOW },
+        { "sortalbumartist",   prog::Option::REQUIRED_ARG, 0, OPT_SORT_ALBUM_ARTIST },
+        { "sortcomposer",      prog::Option::REQUIRED_ARG, 0, OPT_SORT_COMPOSER     },
         { NULL, prog::Option::NO_ARG, 0, 0 }
     };
 
@@ -393,6 +411,24 @@ extern "C" int
                     case OPT_RATING:
                         MP4TagsSetContentRating(mdata, NULL);
                         break;
+                    case OPT_SORT_NAME:
+                        MP4TagsSetSortName( mdata, NULL );
+                        break;
+                    case OPT_SORT_ARTIST:
+                        MP4TagsSetSortArtist( mdata, NULL );
+                        break;
+                    case OPT_SORT_ALBUM_ARTIST:
+                        MP4TagsSetSortAlbumArtist( mdata, NULL );
+                        break;
+                    case OPT_SORT_ALBUM:
+                        MP4TagsSetSortAlbum( mdata, NULL );
+                        break;
+                    case OPT_SORT_COMPOSER:
+                        MP4TagsSetSortComposer( mdata, NULL );
+                        break;
+                    case OPT_SORT_TV_SHOW:
+                        MP4TagsSetSortTVShow( mdata, NULL );
+                        break;
                 }
             }
         }
@@ -600,6 +636,25 @@ extern "C" int
                         MP4TagsSetContentRating(mdata, &rating);
                         break;
                     }
+
+                    case OPT_SORT_NAME:
+                        MP4TagsSetSortName( mdata, tags[i] );
+                        break;
+                    case OPT_SORT_ARTIST:
+                        MP4TagsSetSortArtist( mdata, tags[i] );
+                        break;
+                    case OPT_SORT_ALBUM_ARTIST:
+                        MP4TagsSetSortAlbumArtist( mdata, tags[i] );
+                        break;
+                    case OPT_SORT_ALBUM:
+                        MP4TagsSetSortAlbum( mdata, tags[i] );
+                        break;
+                    case OPT_SORT_COMPOSER:
+                        MP4TagsSetSortComposer( mdata, tags[i] );
+                        break;
+                    case OPT_SORT_TV_SHOW:
+                        MP4TagsSetSortTVShow( mdata, tags[i] );
+                        break;
                 }
             }
         }
