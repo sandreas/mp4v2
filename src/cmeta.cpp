@@ -387,6 +387,30 @@ MP4TagsSetComposer( const MP4Tags* m, const char* value )
 }
 
 bool
+MP4TagsSetNarrator( const MP4Tags* m, const char* value )
+{
+    if( !m || !m->__handle )
+        return false;
+
+    itmf::Tags& cpp = *static_cast<itmf::Tags*>(m->__handle);
+    MP4Tags& c = *const_cast<MP4Tags*>(m);
+
+    try {
+        cpp.c_setString( value, cpp.narrator, c.narrator );
+        return true;
+    }
+    catch( Exception* x ) {
+        mp4v2::impl::log.errorf(*x);
+        delete x;
+    }
+    catch( ... ) {
+        mp4v2::impl::log.errorf("%s: failed",__FUNCTION__);
+    }
+
+    return false;
+}
+
+bool
 MP4TagsSetComments( const MP4Tags* m, const char* value )
 {
     if( !m || !m->__handle )

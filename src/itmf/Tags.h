@@ -40,6 +40,7 @@ public:
     static const string CODE_ALBUM;
     static const string CODE_GROUPING;
     static const string CODE_COMPOSER;
+	static const string CODE_NARRATOR;
     static const string CODE_COMMENTS;
     static const string CODE_GENRE;
     static const string CODE_GENRETYPE;
@@ -97,6 +98,7 @@ public:
     string      album;
     string      grouping;
     string      composer;
+    string      narrator;
     string      comments;
     string      genre;
     uint16_t    genreType;

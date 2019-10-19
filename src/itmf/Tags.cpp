@@ -89,6 +89,7 @@ Tags::c_fetch( MP4Tags*& tags, MP4FileHandle hFile )
     fetchString(  cim, CODE_ALBUM,             album,             c.album );
     fetchString(  cim, CODE_GROUPING,          grouping,          c.grouping );
     fetchString(  cim, CODE_COMPOSER,          composer,          c.composer );
+    fetchString(  cim, CODE_NARRATOR,          narrator,          c.narrator );
     fetchString(  cim, CODE_COMMENTS,          comments,          c.comments );
 
     fetchString(  cim, CODE_GENRE,             genre,             c.genre );
@@ -345,6 +346,7 @@ Tags::c_store( MP4Tags*& tags, MP4FileHandle hFile )
     storeString(  file, CODE_ALBUM,             album,             c.album );
     storeString(  file, CODE_GROUPING,          grouping,          c.grouping );
     storeString(  file, CODE_COMPOSER,          composer,          c.composer );
+    storeString(  file, CODE_NARRATOR,          narrator,          c.narrator );
     storeString(  file, CODE_COMMENTS,          comments,          c.comments );
 
     storeString(  file, CODE_GENRE,             genre,             c.genre );
@@ -842,6 +844,7 @@ const string Tags::CODE_ALBUMARTIST       = "aART";
 const string Tags::CODE_ALBUM             = "\xa9" "alb";
 const string Tags::CODE_GROUPING          = "\xa9" "grp";
 const string Tags::CODE_COMPOSER          = "\xa9" "wrt";
+const string Tags::CODE_NARRATOR          = "\xa9" "nar";
 const string Tags::CODE_COMMENTS          = "\xa9" "cmt";
 const string Tags::CODE_GENRE             = "\xa9" "gen";
 const string Tags::CODE_GENRETYPE         = "gnre";

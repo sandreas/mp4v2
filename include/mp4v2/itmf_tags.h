@@ -105,6 +105,7 @@ typedef struct MP4Tags_s
     const char*        album;
     const char*        grouping;
     const char*        composer;
+    const char*        narrator;
     const char*        comments;
     const char*        genre;
     const uint16_t*    genreType;
@@ -230,6 +231,7 @@ MP4V2_EXPORT bool MP4TagsSetAlbumArtist     ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetAlbum           ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetGrouping        ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetComposer        ( const MP4Tags*, const char* );
+MP4V2_EXPORT bool MP4TagsSetNarrator        ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetComments        ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetGenre           ( const MP4Tags*, const char* );
 MP4V2_EXPORT bool MP4TagsSetGenreType       ( const MP4Tags*, const uint16_t* );
