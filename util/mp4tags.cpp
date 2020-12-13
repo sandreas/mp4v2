@@ -68,8 +68,9 @@ using namespace mp4v2::util;
 #define OPT_SORT_ALBUM   'k'
 #define OPT_SORT_COMPOSER   'K'
 #define OPT_SORT_TV_SHOW   'W'
+#define OPT_PURCHASE_DATE   'U'
 
-#define OPT_STRING  "r:A:a:b:c:C:d:D:e:E:g:G:H:i:I:j:l:L:m:M:n:N:o:O:p:P:B:R:s:S:t:T:x:X:w:y:z:Z:f:F:J:k:K:W:"
+#define OPT_STRING  "r:A:a:b:c:C:d:D:e:E:g:G:H:i:I:j:l:L:m:M:n:N:o:O:p:P:B:R:s:S:t:T:U:x:X:w:y:z:Z:f:F:J:k:K:W:"
 
 
 // fFJkKqQuUVWxXYz   (h=help, v=version, r=remove)
@@ -134,6 +135,7 @@ static const char* const help_text =
     "  -W, -sorttvshow  STR  Set the sort tv show\n"
     "  -J, -sortalbumartist STR  Set the sort album artist\n"
     "  -K, -sortcomposer    STR  Set the sort composer\n"
+    "  -U, -purchasedate    STR  Set the purchase date\n"
     "  -r, -remove      STR  Remove tags by code (e.g. \"-r cs\"\n"
     "                        removes the comment and song tags)";
 
@@ -187,6 +189,7 @@ extern "C" int
         { "sorttvshow",  prog::Option::REQUIRED_ARG, 0, OPT_SORT_TV_SHOW },
         { "sortalbumartist",   prog::Option::REQUIRED_ARG, 0, OPT_SORT_ALBUM_ARTIST },
         { "sortcomposer",      prog::Option::REQUIRED_ARG, 0, OPT_SORT_COMPOSER     },
+        { "purchasedate",      prog::Option::REQUIRED_ARG, 0, OPT_PURCHASE_DATE },
         { NULL, prog::Option::NO_ARG, 0, 0 }
     };
 
@@ -429,6 +432,9 @@ extern "C" int
                     case OPT_SORT_TV_SHOW:
                         MP4TagsSetSortTVShow( mdata, NULL );
                         break;
+                    case OPT_PURCHASE_DATE:
+                        MP4TagsSetPurchaseDate( mdata, NULL );
+                        break;
                 }
             }
         }
@@ -654,6 +660,9 @@ extern "C" int
                         break;
                     case OPT_SORT_TV_SHOW:
                         MP4TagsSetSortTVShow( mdata, tags[i] );
+                        break;
+                    case OPT_PURCHASE_DATE:
+                        MP4TagsSetPurchaseDate( mdata, tags[i] );
                         break;
                 }
             }
